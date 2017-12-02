@@ -1,0 +1,49 @@
+<html>
+
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="header">
+            <div class="wrapper">
+                <div class="logo">Parking<span>Spot <i class="fa fa-crosshairs" aria-hidden="true"></i></span></div>
+            </div>
+        </div>
+    </header>
+    
+    <article>
+        <div class="wrapper">
+        <div class="heading">Pronađi svoje mjesto za parking</div>
+            <div class="zoom-buttons">
+                <div class="zoomBtn">
+                    <button onclick="zoomIn(2);"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                </div>
+                <div class="zoomBtn">
+                    <button onclick="zoomOut(2);"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                </div>
+            </div>
+            <div id="dvMap"></div>
+        </div>
+    </article>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?"></script>
+    <script type="text/javascript" src="map.js"></script>
+
+    <script type="text/javascript">
+        var markers = [
+            ['Parking'/*name*/, 43.306978/*latitude*/, 17.821615/*longitude*/, 0/*total parking spots*/, 13/*available parking spots*/, ''/*always send empty string as a last item in array (this is for icon)*/],
+            ['Parking 2', 43.863779, 18.431498, 4, 30, '']
+        ];
+        getMarkers(markers);
+    </script>
+
+
+</body>
+
+</html>
