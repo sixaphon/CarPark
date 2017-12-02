@@ -26,7 +26,8 @@ if (navigator.geolocation) {
             var currentLatLng = new google.maps.LatLng(p.coords.latitude, p.coords.longitude);
 
             var currentLocation = ['Your Location', p.coords.latitude, p.coords.longitude, null, null, "loc.png"];
-            markers.push(currentLocation);
+            // markers.push(currentLocation);
+            markers.splice(0, 0, currentLocation)
     
             var mapOptions = {
     
@@ -54,7 +55,7 @@ if (navigator.geolocation) {
                 marker = new google.maps.Marker({
                     position: position,
                     map: map,
-                    title: markers[i][0],
+                    // title: markers[i][0],
                     icon: markers[i][5]
                 });
 
@@ -68,14 +69,15 @@ if (navigator.geolocation) {
                 //     '</div>']
                 // ];
                 
-                // Allow each marker to have an info window    
-                google.maps.event.addListener(marker, 'click', (function(marker, i) {
-                    return function() {
-                        infoWindow.setContent('available: ' + markers[i][3] + ' of ' + markers[i][4]);
-                        infoWindow.open(map, marker);
-                    }
-                })(marker, i));
-
+                if(i != 0){
+                    // Allow each marker to have an info window    
+                    google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                        return function() {
+                            infoWindow.setContent(markers[i][0] + ': Slobodno: ' + markers[i][3] + ' mjesta od ' + markers[i][4] + 'mjesta.');
+                            infoWindow.open(map, marker);
+                        }
+                    })(marker, i));
+                }
                 //Automatically center the map fitting all markers on the screen
                 // map.fitBounds(bounds);
             }
